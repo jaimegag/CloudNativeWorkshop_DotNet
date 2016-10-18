@@ -79,13 +79,13 @@ $ cf login
 +
 Follow the prompts.
 
-. Change to the _Publish Target Location_  directory (this is the folder containing the published code files and manifest.yml):
+4. Change to the _Publish Target Location_  directory (this is the folder containing the published code files and manifest.yml):
 +
 ----
 > cd $ProjectHome/PCFDeploy
 ----
 
-. Push the application!
+5. Push the application!
 +
 ----
 > cf push
@@ -158,12 +158,12 @@ $
 ----
 ===
 
-4. From the console tail the logs of your application
+6. From the console tail the logs of your application
 ----
 > cf logs wsattendees
 ----
-5. Visit the application in your browser by hitting the route that was diplayed by the CLI, and go to the sections of the app where you added log traces in the HomeController
-6. After a few clicks go back to the command prompt where you were tailing your logs and you should now see APP log traces with the information you put in the code
+7. Visit the application in your browser by hitting the route that was diplayed by the CLI, and go to the sections of the app where you added log traces in the HomeController
+8. After a few clicks go back to the command prompt where you were tailing your logs and you should now see APP log traces with the information you put in the code
 +
 ----
 2016-10-18T17:09:53.28-0400 [RTR/0]      OUT wsattendees-jga.cfapps.haas-76.pez.pivotal.io - [18/10/2016:21:09:53.255 +0000] "GET / HTTP/1.1" 200 0 3103 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36" 10.193.145.250:51248 x_forwarded_for:"10.193.145.1" x_forwarded_proto:"http" vcap_request_id:7f250aca-c704-41d4-598c-b79ac163d9d1 response_time:0.028023432 app_id:194a50fc-e5f2-4389-b95a-1a4630b6375f
