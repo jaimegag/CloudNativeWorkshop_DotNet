@@ -93,7 +93,6 @@ Follow the prompts.
 +
 You should see output similar to the following listing. Take a look at the listing callouts for a play-by-play of what's happening:
 +
-===
 ----
 $ cf push
 Using manifest file C:\Users\admin\Documents\Published\PCFDeploy\manifest.yml
@@ -156,7 +155,6 @@ buildpack: binary_buildpack
 #0   running   2016-10-18 02:58:24 PM   0.0%   352M of 512M   19.8M of 1G
 $
 ----
-===
 
 6. From the console tail the logs of your application
 ----
