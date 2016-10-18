@@ -118,7 +118,7 @@ buildpack: binary_buildpack
 
      state     since                    cpu    memory         disk          details
 #0   running   2016-10-16 11:36:33 PM   0.0%   292M of 512M   25.3M of 1G
-$
+
 ----
 ====
 

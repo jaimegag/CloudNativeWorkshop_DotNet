@@ -11,10 +11,10 @@ In the next two labs we'll explore Pivotal Cloud Foundry operations.
 . Now let's increase the number of running application instances to 3.  :
 +
 ----
-$ cf scale env -i 3
+> cf scale env -i 3
 Scaling app env in org instructor / space development as admin...
 OK
-$
+
 ----
 +
 In reporting `OK`, the CLI is letting you know that the additional requested instances have been started, but they are not yet necessarily running.
@@ -23,7 +23,7 @@ In reporting `OK`, the CLI is letting you know that the additional requested ins
 +
 ====
 ----
-$ cf app env
+> cf app env
 Showing health and status for app env in org instructor / space development as admin...
 OK
 
@@ -39,7 +39,7 @@ buildpack: binary_buildpack
 #0   running    2016-10-16 08:37:52 PM   0.2%   113.4M of 512M   3.8M of 1G
 #1   starting   2016-10-16 08:53:26 PM   0.2%   110.2M of 512M   3.8M of 1G
 #2   starting   2016-10-16 08:53:26 PM   0.2%   111.6M of 512M   3.8M of 1G
-$
+>
 ----
 <1> This application instance has completed the startup process and is actually able to accept requests.
 <2> This application instance is still starting and will not have any requests routed to it.
@@ -48,7 +48,7 @@ $
 . Eventually all instances will converge to a running state:
 +
 ----
-$ cf app env
+> cf app env
 Showing health and status for app env in org instructor / space development as admin...
 OK
 
@@ -64,7 +64,7 @@ buildpack: binary_buildpack
 #0   running   2016-10-16 08:37:52 PM   0.2%   113.4M of 512M   3.8M of 1G
 #1   running   2016-10-16 08:52:16 PM   0.0%   110.1M of 512M   3.8M of 1G
 #2   running   2016-10-16 08:52:17 PM   0.0%   111.5M of 512M   3.8M of 1G
-$
+
 ----
 
 . Revisit the application route in the browser.
@@ -83,16 +83,16 @@ This makes for very dynamic and rapid reconfiguration!
 . We can scale the application instances back down as easily as we scaled them up, using the same command structure:
 +
 ----
-$ cf scale env -i 1
+> cf scale env -i 1
 Scaling app env in org instructor / space development as admin...
 OK
-$
+
 ----
 
 . Check the application status again:
 +
 ----
-$ cf app env
+> cf app env
 Showing health and status for app env in org instructor / space development as admin...
 OK
 
@@ -106,7 +106,7 @@ buildpack: binary_buildpack
 
      state     since                    cpu    memory           disk         details
 #0   running   2016-10-16 08:37:52 PM   0.0%   113.8M of 512M   3.8M of 1G
-$
+
 ----
 +
 As you can see, we're back down to only one instance running, and it is in fact the original index 0 that we started with.
@@ -121,7 +121,7 @@ There are two ways to discover what routes, or HTTP URLs, are ampped to an appli
 The first is available via the CLI. Just type:
 
 ----
-$ cf app env
+> cf app env
 Showing health and status for app env in org instructor / space development as admin...
 OK
 
@@ -135,7 +135,7 @@ buildpack: binary_buildpack
 
      state     since                    cpu    memory           disk         details
 #0   running   2016-10-16 08:37:52 PM   0.2%   116.9M of 512M   3.8M of 1G
-$
+
 ----
 
 and you'll see the list of routes in the section that says _urls_.

@@ -20,7 +20,7 @@ Application developers can view application logs using the CF CLI.
 . Let's view recent log messages for the application.
 +
 ----
-$ cf logs env --recent
+> cf logs env --recent
 ----
 +
 Here are two interesting subsets of one output from that command:
@@ -28,7 +28,7 @@ Here are two interesting subsets of one output from that command:
 .CF Component Logs
 ====
 ----
-$ cf logs env --recent
+> cf logs env --recent
 Connected, dumping recent logs for app env in org instructor / space development as admin...
 2016-10-16T20:51:06.59-0400 [CELL/1]     OUT Creating container
 2016-10-16T20:51:07.18-0400 [CELL/1]     OUT Successfully created container
@@ -63,7 +63,7 @@ These events are properly interleaved based on time, giving you an accurate pict
 . To get a running ``tail'' of the application logs rather than a dump, simply type:
 +
 ----
-$ cf logs env
+> cf logs env
 ----
 +
 You can try various things like refreshing the browser and triggering stop/start events to see logs being generated.
@@ -75,7 +75,7 @@ Cloud Foundry's https://docs.pivotal.io/pivotalcf/1-7/concepts/architecture/#nsy
 . If you don't have one already running, start a log tail for `workshop`.  Alternatively, you could view the logs using the papertrail app.
 +
 ----
-$ cf logs env
+> cf logs env
 ----
 
 . If you do not have more than one application instance running, execute the scale command to scale to 2 or more application instances.  Visit the application in the browser, and click on the ``Kill Switch'' button. This button will trigger an Environment.Exit(-1) causing the Health Manager to observe an application instance crash:
@@ -138,7 +138,7 @@ Take a look at the events that have transpired so far for our deployment of `wor
 
 ====
 ----
-$ cf events env
+> cf events env
 Getting events for app env in org instructor / space development as admin...
 
 time                          event                   actor   description
@@ -166,7 +166,7 @@ time                          event                   actor   description
 2016-10-16T20:13:06.00-0400   audit.app.update        admin
 2016-10-16T20:13:06.00-0400   audit.app.map-route     admin
 2016-10-16T20:13:04.00-0400   audit.app.create        admin   instances: 1, memory: 512, state: STOPPED, environment_json: PRIVATE DATA HIDDEN
-$
+
 ----
 <1> Events are sorted newest to oldest, so we'll start from the bottom.
 Here we see the `app.create` event, which created our application's record and stored all of its metadata (e.g. `memory: 512`).
@@ -180,16 +180,16 @@ Here we see the `app.create` event, which created our application's record and s
 . Let's explicitly ask for the application to be stopped:
 +
 ----
-$ cf stop env
+> cf stop env
 Stopping app env in org instructor / space development as admin...
 OK
-$
+
 ----
 
 . Now, examine the additional `app.update` event:
 +
 ----
-$ cf events env
+> cf events env
 Getting events for app env in org instructor / space development as admin...
 
 time                          event                   actor   description
@@ -201,13 +201,13 @@ time                          event                   actor   description
                                                               * Exited with status -1
                                                               * cancelled
                                                               * cancelled
-$
+
 ----
 
 . Start the application again:
 +
 ----
-$ cf start env
+> cf start env
 Starting app env in org instructor / space development as admin...
 
 0 of 2 instances running, 2 starting
@@ -234,16 +234,31 @@ buildpack: binary_buildpack
      state     since                    cpu    memory           disk         details
 #0   running   2016-10-16 11:14:20 PM   0.0%   105.2M of 512M   3.8M of 1G
 #1   running   2016-10-16 11:14:21 PM   0.0%   105.1M of 512M   3.8M of 1G
-$
+
 ----
 
 . And again, view the additional `app.update` event:
 +
 ----
-$ cf events env
+> cf events env
 Getting events for app env in org instructor / space development as admin...
 
 time                          event                   actor   description
 2016-10-16T23:14:15.00-0400   audit.app.update        admin   state: STARTED
 2016-10-16T23:11:21.00-0400   audit.app.update        admin   state: STOPPED
 ----
+
+== Viewing Application _Metrics_ with PCF Metrics
+
+1. To access PCF Metrics go to this URL in your browser: https://metrics.run.haas-76.pez.pivotal.io  
+    a. Accept the authorization request if prompted.
+    b. Select the application you want to see metrics from in the selection box
++
+image::../../Common/images/lab-metrics-sel.png[]
++
+	c. Explore the container and network metrics and correlate them with your logs!
++
+image::../../Common/images/lab-metrics.png[]
++
+    d. For more information about PCF Metrics visit this URL: https://docs.pivotal.io/pcf-metrics/1-1/using.html
+
