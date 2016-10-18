@@ -48,7 +48,7 @@ You must first create an instance of the Config Server service in a org/space.
 2. Create an instance of the config server and set its configuration up with a github repo referenced in the config-server.json file:
 +
 ----
-cf create-service p-config-server standard myConfigServer -c ./config-server.json
+> cf create-service p-config-server standard myConfigServer -c ./config-server.json
 ----
 
 
@@ -69,13 +69,13 @@ cf create-service p-config-server standard myConfigServer -c ./config-server.jso
 6. In a command prompt navigate to the published folder
 +
 ----
-cd c:\publish
+> cd c:\publish
 ----
 
 7. Push the application!
 +
 ----
-cf push 
+> cf push 
 ----
 
 
