@@ -47,7 +47,7 @@ $
 
 . Login to Apps Manager URL: https://apps.run.haas-76.pez.pivotal.io. Use the same username and passowrd you entered when using the CF CLI
 +
-image::../../Common/images/lab-student-login.png[]
-\s
+image::../../Common/images/lab-student-login.png[]  
+  
 +
 image::../../Common/images/lab-student-loggedin.png[]
