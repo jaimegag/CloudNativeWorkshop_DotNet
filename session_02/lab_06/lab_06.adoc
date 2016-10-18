@@ -1,0 +1,173 @@
+= Lab 7 - Managing application logs from a .NET application
+
+[abstract]
+--
+In this lab we will continue adding on to our Attendees ASP.NET application by using log4net to log information to the console (stdout/stderr)
+--
+
+== Building upon our Attendees Application
+
+=== Configuring log4net
+
+. Right click on the Project name and select Manage NuGet Packages
+. Click the browse link 
+. Search for log4net
+. Select the log4net by Apache Software Foundation (v2.0.5) and click the Install Button. 
+.. Click Ok to accept the Changes
++
+image::../../Common/images/lab-log4net-nuget.png[]
++
+. In the Solutions Explorer click on Properties and open the AssemblyInfo.cs
+.. Add the following code at the bottom of this file:
+----
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
+----
+.. Save the AssemblyInfo.cs file
+. In the Solutions Explorer right click the solution and create a new text file with name "log4net.config"
+.. Add the following content to the file:
+----
+<?xml version="1.0" encoding="utf-8" ?>
+  <log4net>
+    <root>
+      <level value="ALL" />
+      <appender-ref ref="MyAppender" />
+    </root>
+    <appender name="MyAppender" type="log4net.Appender.ConsoleAppender">
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date %level %logger - %message%newline" />
+      </layout>
+    </appender>
+  </log4net>
+----
+.. Save the log4net.config file
+
+
+=== Using log4net 
+
+. In the Controllers folder open the HomeController.cs
+.. Add the following class member field:
+----
+private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
+----
+.. Add as many log entries as desired in the class methods. For example:
+----
+public ActionResult Index()
+{
+    log.Info("Action Index has been fired.");
+    return View();
+}
+----
+.. Save the HomeController.cs file
+
+
+=== Publishing and Pushing the .NET Application
+
+. Publish the .NET applicaiton by right-clicking on the project name and selecting publish. Use the same profile as was used before.
+.. Note: If you have changed namespaces or made changes to the assembly name, be sure you delete any files prior to publishing. If you do, be sure to back up the manifest.yml file.
+
+. If you haven't already, set the API target for the CLI: (set appropriate end point for your environment)
++
+----
+$ cf api https://api.run.haas-76.pez.pivotal.io --skip-ssl-validation
+----
+
+. Login to Pivotal Cloudfoundry:
++
+----
+$ cf login
+----
++
+Follow the prompts.
+
+. Change to the _Publish Target Location_  directory (this is the folder containing the published code files and manifest.yml):
++
+----
+> cd $ProjectHome/PCFDeploy
+----
+
+. Push the application!
++
+----
+> cf push
+----
++
+You should see output similar to the following listing. Take a look at the listing callouts for a play-by-play of what's happening:
++
+===
+----
+$ cf push
+Using manifest file C:\Users\admin\Documents\Published\PCFDeploy\manifest.yml
+
+Using stack windows2012R2...
+OK
+Updating app wsattendees in org instructor / space development as admin...
+OK
+
+Using route wsattendees-jga.cfapps.haas-76.pez.pivotal.io
+Uploading wsattendees...
+Uploading app files from: C:\Users\admin\Documents\Published\PCFDeploy
+Uploading 722.3K, 45 files
+Done uploading
+OK
+
+Starting app wsattendees in org instructor / space development as admin...
+Downloading binary_buildpack...
+Creating container
+Downloaded binary_buildpack (8.3K)
+Successfully created container
+Downloading app package...
+Downloaded app package (5.7M)
+Downloading build artifacts cache...
+Downloaded build artifacts cache (111B)
+Staging...
+Exit status 0
+Uploading build artifacts cache...
+Staging complete
+Uploading droplet, build artifacts cache...
+Uploading droplet...
+Uploaded build artifacts cache (130B)
+Uploaded droplet (5.7M)
+Uploading complete
+
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+1 of 1 instances running
+
+App started
+
+
+OK
+
+App wsattendees was started using this command `..\tmp\lifecycle\WebAppServer.exe`
+
+Showing health and status for app wsattendees in org instructor / space development as admin...
+OK
+
+requested state: started
+instances: 1/1
+usage: 512M x 1 instances
+urls: wsattendees-jga.cfapps.haas-76.pez.pivotal.io
+last uploaded: Tue Oct 18 18:57:27 UTC 2016
+stack: windows2012R2
+buildpack: binary_buildpack
+
+     state     since                    cpu    memory         disk          details
+#0   running   2016-10-18 02:58:24 PM   0.0%   352M of 512M   19.8M of 1G
+$
+----
+===
+
+. From the console tail the logs of your application
+----
+> cf logs wsattendees
+----
+. Visit the application in your browser by hitting the route that was diplayed by the CLI, and go to the sections of the app where you added log traces in the HomeController
+. After a few clicks go back to the command prompt where you were tailing your logs and you should now see APP log traces with the information you put in the code
++
+----
+2016-10-18T17:09:53.28-0400 [RTR/0]      OUT wsattendees-jga.cfapps.haas-76.pez.pivotal.io - [18/10/2016:21:09:53.255 +0000] "GET / HTTP/1.1" 200 0 3103 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36" 10.193.145.250:51248 x_forwarded_for:"10.193.145.1" x_forwarded_proto:"http" vcap_request_id:7f250aca-c704-41d4-598c-b79ac163d9d1 response_time:0.028023432 app_id:194a50fc-e5f2-4389-b95a-1a4630b6375f
+2016-10-18T17:10:05.93-0400 [APP/0]      OUT 2016-10-18 14:10:05,935 INFO MVCAttendees2.Controllers.HomeController - Action Index has been fired.
+2016-10-18T17:10:08.09-0400 [RTR/0]      OUT wsattendees-jga.cfapps.haas-76.pez.pivotal.io - [18/10/2016:21:10:08.089 +0000] "GET / HTTP/1.1" 200 0 3103 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36" 10.193.145.250:51290 x_forwarded_for:"10.193.145.1" x_forwarded_proto:"http" vcap_request_id:1d13ed97-bcc2-45d4-6560-7872e8ba544f response_time:0.002827215 app_id:194a50fc-e5f2-4389-b95a-1a4630b6375f
+----
+
