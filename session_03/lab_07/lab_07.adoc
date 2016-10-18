@@ -31,12 +31,12 @@ Follow the prompts.
 
 == Deploy SimpleCloudFoundry - ASP.NET 4.5 Sample Application
 
-# Pre-requisites
+=== Pre-requisites
 1. Installed Pivotal CloudFoundry 1.7
 2. Installed Spring Cloud Services 1.0.9
 3. Visual Studio 2015 Update 3
 
-# Setup Config Server
+=== Setup Config Server
 You must first create an instance of the Config Server service in a org/space.
 
 1. Go to the repository folder container the code for the application:
@@ -44,15 +44,15 @@ You must first create an instance of the Config Server service in a org/space.
 ---
 > cd src\AspDotNet4\SimpleCloudFoundry
 ---
-+
+
 2. Create an instance of the config server and set its configuration up with a github repo referenced in the config-server.json file:
 +
 ---
 cf create-service p-config-server standard myConfigServer -c ./config-server.json
 ---
-+
 
-# Publish App & Push
+
+=== Publish App & Push
 
 1. Open \Samples\Configuration\Configuration.sln in Visual Studio.
     a. Wait for Visual Studio to load all projects.
@@ -63,7 +63,7 @@ cf create-service p-config-server standard myConfigServer -c ./config-server.jso
 ---
   host: configapp-${random-word}
 ---
-+
+
 4. Right-click project and select Publish
 5. Publish the App to a folder. (e.g. c:\publish)
 6. In a command prompt navigate to the published folder
@@ -71,15 +71,15 @@ cf create-service p-config-server standard myConfigServer -c ./config-server.jso
 ---
 cd c:\publish)
 ---
-+
+
 7. Push the application!
 +
 ---
 cf push 
 ---
-+
 
-# What to expect
+
+=== What to expect
 The cf push will create an app in the space by the name `foo` and will bind the `myConfigServer` service instance to the app.
 
 The Config Servers Git repository has been set to: `https://github.com/spring-cloud-samples/config-repo`
