@@ -19,7 +19,7 @@ In this lab we will continue adding on to our Attendees ASP.NET application by u
     +
 5. In the Solutions Explorer click on Properties and open the AssemblyInfo.cs
     a. Add the following code at the bottom of this file:  
-        ```c
+        ```
         [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
         ```
     b. Save the AssemblyInfo.cs file
