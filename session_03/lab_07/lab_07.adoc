@@ -1,0 +1,93 @@
+= Lab 7 - Using Config Server from a .NET application
+
+[abstract]
+--
+In this lab we will push a .NET web application to cloud foundry and will bind it to a Config Server to read configuration from a distributed.
+--
+
+== Download code
+
+. Download and clone the git repo in Visual Studio, if you have the command line tool installed, or you can click 'Download ZIP' on the right side of the page https://github.com/SteeltoeOSS/Samples[here]
++
+----
+> git clone https://github.com/SteeltoeOSS/Samples
+----
+
+== Target
+
+. If you haven't already, set the API target for the CLI: (set appropriate end point for your environment)
++
+----
+> cf api https://api.run.haas-76.pez.pivotal.io --skip-ssl-validation
+----
+
+. Login to Pivotal Cloudfoundry:
++
+----
+> cf login
+----
++
+Follow the prompts. 
+
+== Deploy SimpleCloudFoundry - ASP.NET 4.5 Sample Application
+
+# Pre-requisites
+1. Installed Pivotal CloudFoundry 1.7
+2. Installed Spring Cloud Services 1.0.9
+3. Visual Studio 2015 Update 3
+
+# Setup Config Server
+You must first create an instance of the Config Server service in a org/space.
+
+1. Go to the repository folder container the code for the application:
++
+---
+> cd src\AspDotNet4\SimpleCloudFoundry
+---
++
+2. Create an instance of the config server and set its configuration up with a github repo referenced in the config-server.json file:
++
+---
+cf create-service p-config-server standard myConfigServer -c ./config-server.json
+---
++
+
+# Publish App & Push
+
+1. Open \Samples\Configuration\Configuration.sln in Visual Studio.
+    a. Wait for Visual Studio to load all projects.
+2. Select SimpleCloudFoundry project in Solution Explorer.
+3. Open the manifest.yml file and change the application name to something unique: (e.g: configapp-<your_initials>)
+    a. Alternatively add a unique hosname in the manifest adding the following row below the name:
++
+---
+  host: configapp-${random-word}
+---
++
+4. Right-click project and select Publish
+5. Publish the App to a folder. (e.g. c:\publish)
+6. In a command prompt navigate to the published folder
++
+---
+cd c:\publish)
+---
++
+7. Push the application!
++
+---
+cf push 
+---
++
+
+# What to expect
+The cf push will create an app in the space by the name `foo` and will bind the `myConfigServer` service instance to the app.
+
+The Config Servers Git repository has been set to: `https://github.com/spring-cloud-samples/config-repo`
+
+Use the menus at the top of the app to see various output:
+
+* `CloudFoundry Settings` - should show `VCAP_APPLICATION` and `VCAP_SERVICES` configuration data.
+* `Config Server Settings` - should show the settings used by the client when communicating to the config server.  These have been picked up from the service binding.
+* `Config Server Data` - this is the configuration data returned from the Config Servers Git Repo. It will be some of the data from `foo.properties`, `foo-development.properties` and `application.yml` found in the Git repo.
+* `Reload` - will cause a reload of the configuration data from the server.
+
