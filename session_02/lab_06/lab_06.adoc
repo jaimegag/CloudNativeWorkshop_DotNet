@@ -14,17 +14,17 @@ In this lab we will continue adding on to our Attendees ASP.NET application by u
 3. Search for log4net
 4. Select the log4net by Apache Software Foundation (v2.0.5) and click the Install Button. 
   a. Click Ok to accept the Changes and confirm the packages is marked as installed (green tick)
-  +
-  image::../../Common/images/lab-log4net-nuget.png[]
-  +
++
+image::../../Common/images/lab-log4net-nuget.png[]
++
 5. In the Solutions Explorer click on Properties and open the AssemblyInfo.cs
   a. Add the following code at the bottom of this file:
-  ```
-  [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
-  ```
-.. Save the AssemblyInfo.cs file
-. In the Solutions Explorer right click the solution and create a new text file with name "log4net.config"
-.. Add the following content to the file:
+```
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
+```
+  b. Save the AssemblyInfo.cs file
+6. In the Solutions Explorer right click the solution and create a new text file with name "log4net.config"
+  a. Add the following content to the file:
 ```
 <?xml version="1.0" encoding="utf-8" ?>
   <log4net>
@@ -39,7 +39,7 @@ In this lab we will continue adding on to our Attendees ASP.NET application by u
     </appender>
   </log4net>
 ```
-.. Save the log4net.config file
+  b. Save the log4net.config file
 
 
 === Using log4net 
