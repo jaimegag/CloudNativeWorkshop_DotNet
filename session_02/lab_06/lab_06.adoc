@@ -157,9 +157,11 @@ $
 ----
 
 6. From the console tail the logs of your application
++
 ----
 > cf logs wsattendees
 ----
++
 7. Visit the application in your browser by hitting the route that was diplayed by the CLI, and go to the sections of the app where you added log traces in the HomeController
 8. After a few clicks go back to the command prompt where you were tailing your logs and you should now see APP log traces with the information you put in the code
 +
