@@ -15,13 +15,13 @@ In this lab we will push a .NET web application to cloud foundry and will bind i
 
 == Target
 
-. If you haven't already, set the API target for the CLI: (set appropriate end point for your environment)
+1. If you haven't already, set the API target for the CLI: (set appropriate end point for your environment)
 +
 ----
 > cf api https://api.run.haas-76.pez.pivotal.io --skip-ssl-validation
 ----
 
-. Login to Pivotal Cloudfoundry:
+2. Login to Pivotal Cloudfoundry:
 +
 ----
 > cf login
