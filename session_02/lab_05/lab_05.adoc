@@ -1,4 +1,4 @@
-= Lab 6 - Deploying an ASP.NET MVC Application
+= Lab 5 - Deploying an ASP.NET MVC Application
 
 [abstract]
 --
