@@ -19,9 +19,9 @@ image::../../Common/images/lab-log4net-nuget.png[]
 +
 5. In the Solutions Explorer click on Properties and open the AssemblyInfo.cs
   a. Add the following code at the bottom of this file:  
-  ```
+---
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
-  ```
+---
   b. Save the AssemblyInfo.cs file
 6. In the Solutions Explorer right click the solution and create a new text file with name "log4net.config"
   a. Add the following content to the file:
