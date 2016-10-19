@@ -37,19 +37,19 @@ Follow the prompts.
 3. Visual Studio 2015 Update 3
 
 === Setup Config Server
-You must first create an instance of the Config Server service in a org/space.
+You must first create an instance of the Config Server service in a org/space.  
 
 1. Go to the repository folder container the code for the application:
 +
----
+----
 > cd src\AspDotNet4\SimpleCloudFoundry
----
+----
 
 2. Create an instance of the config server and set its configuration up with a github repo referenced in the config-server.json file:
 +
----
-cf create-service p-config-server standard myConfigServer -c ./config-server.json
----
+----
+> cf create-service p-config-server standard myConfigServer -c ./config-server.json
+----
 
 
 === Publish App & Push
@@ -60,23 +60,23 @@ cf create-service p-config-server standard myConfigServer -c ./config-server.jso
 3. Open the manifest.yml file and change the application name to something unique: (e.g: configapp-<your_initials>)
     a. Alternatively add a unique hosname in the manifest adding the following row below the name:
 +
----
+----
   host: configapp-${random-word}
----
+----
 
 4. Right-click project and select Publish
 5. Publish the App to a folder. (e.g. c:\publish)
 6. In a command prompt navigate to the published folder
 +
----
-cd c:\publish)
----
+----
+> cd c:\publish
+----
 
 7. Push the application!
 +
----
-cf push 
----
+----
+> cf push 
+----
 
 
 === What to expect
