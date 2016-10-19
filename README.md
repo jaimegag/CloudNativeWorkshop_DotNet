@@ -56,5 +56,5 @@ $ git fetch --all
   - [Lab 5 - Deploying an ASP.NET MVC Application](session_02/lab_05/lab_05.adoc)
   - [Lab 6 - Managing application logs from a .NET application](session_02/lab_06/lab_06.adoc)
 
-#### Session 3 [(Slides)](session_03/session_03.pdf): _Spring Cloud Netflix & SteelToe_
+#### Session 3 [(Slides)](session_03/Session_03.pdf): _Spring Cloud Netflix & SteelToe_
   - [Lab 7 - Using Config Server from a .NET application](session_03/lab_07/lab_07.adoc)
