@@ -7,10 +7,10 @@ In this lab we will push a .NET web application to cloud foundry and will bind i
 
 == Download code
 
-. Download and clone the git repo in Visual Studio, if you have the command line tool installed, or you can click 'Download ZIP' on the right side of the page https://github.com/SteeltoeOSS/Samples[here]
+. Download and clone the git repo (dev branch) in Visual Studio, if you have the command line tool installed, or you can click 'Download ZIP' on the right side of the page https://github.com/SteeltoeOSS/Samples[here]
 +
 ----
-> git clone https://github.com/SteeltoeOSS/Samples
+> git clone -b dev https://github.com/SteeltoeOSS/Samples
 ----
 
 == Target
