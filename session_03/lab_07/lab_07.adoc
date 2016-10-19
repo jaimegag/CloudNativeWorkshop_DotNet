@@ -54,7 +54,7 @@ You must first create an instance of the Config Server service in a org/space.
 
 === Publish App & Push
 
-1. Open \Samples\Configuration\Configuration.sln in Visual Studio.
+1. Open Samples\Configuration\Configuration.sln in Visual Studio.
     a. Wait for Visual Studio to load all projects.
 2. Select SimpleCloudFoundry project in Solution Explorer.
 3. Open the manifest.yml file and change the application name to something unique: (e.g: configapp-<your_initials>)
