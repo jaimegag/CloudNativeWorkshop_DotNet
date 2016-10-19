@@ -65,8 +65,8 @@ A _restage_ is generally recommended because Cloud Foundry buildpacks also have 
 > cf restage env
 ----
 +
-Once the application is running again, revisit or refresh the browser tab where you have the _Wokshop_ application loaded.  You'll notice now we have information that could be used to connect to a DB.
-In fact, our data is now being retrieved from that SQL Server database!
+Once the application is running again, revisit or refresh the browser tab where you have the _Wokshop_ application loaded.  You'll notice now we have information that could be used to connect to the MySQL DB.
+In fact, data can now be stored/retrieved into/from that MySQL database!
 +
 ----
 Bound Services:
