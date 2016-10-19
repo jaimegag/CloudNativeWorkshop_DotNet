@@ -42,7 +42,7 @@ You must first create an instance of the Config Server service in a org/space.
 1. Go to the repository folder container the code for the application:
 +
 ----
-> cd Samples\src\AspDotNet4\SimpleCloudFoundry
+> cd Samples\Configuration\src\AspDotNet4\SimpleCloudFoundry
 ----
 
 2. Create an instance of the config server and set its configuration up with a github repo referenced in the config-server.json file:
