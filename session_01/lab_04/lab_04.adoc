@@ -171,10 +171,10 @@ time                          event                   actor   description
 <1> Events are sorted newest to oldest, so we'll start from the bottom.
 Here we see the `app.create` event, which created our application's record and stored all of its metadata (e.g. `memory: 512`).
 <2> The `app.map-route` event records the incoming request to assign a route to our application.
-<3> This `app.update` event records the resulting change to our applications metadata.
-<4> This `app.update` event records the change of our application's state to `STARTED`.
-<5> Remember scaling the application up? This `app.update` event records the metadata change `instances: 2`.
-<6> And here's the `app.crash` event recording that we encountered a crash of an application instance.
+<3> An `app.update` event records the resulting change to our applications metadata.
+<4> An `app.update` event records the change of our application's state to `STARTED`.
+<5> Remember scaling the application up? An `app.update` event records the metadata change `instances: 2`.
+<6> Also there's the `app.crash` event recording that we encountered a crash of an application instance.
 ====
 
 . Let's explicitly ask for the application to be stopped:
