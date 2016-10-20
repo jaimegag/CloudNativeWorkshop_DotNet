@@ -39,8 +39,11 @@ applications:
 == Push It!
 
 . Open up a command prompt 
-. Change to the _Publish Target Location_  directory (this is the folder containing the published code files and manifest.yml):
-
+. Change to the folder containing the published code files and manifest.yml (Replace "[Publish-Target-Location-folder]" with the actual folder name: 
++
+----
+> cd [Publish-Target-Location-folder]
+----
 . Push the application!
 +
 ----
