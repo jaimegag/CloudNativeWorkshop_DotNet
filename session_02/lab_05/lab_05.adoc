@@ -18,7 +18,7 @@ In this lab we will push an ASP.NET MVC web application to cloud foundry.
 . Choose a Custom publish target. 
 .. Provide a name like Publish for PCF - Debug
 .. Publish method: File System
-.. Target location ..\PCFDeploy
+.. Target location, e.g: ..\PCFDeploy (Remember this location to access it later from the command prompt)
 .. Choose a configuration (Debug or Release)
 .. (Optional) Change File Publish Options
 ... Check Delete all existing files prior to publish
@@ -40,10 +40,6 @@ applications:
 
 . Open up a command prompt 
 . Change to the _Publish Target Location_  directory (this is the folder containing the published code files and manifest.yml):
-+
-----
-> cd $ProjectHome/PCFDeploy
-----
 
 . Push the application!
 +
