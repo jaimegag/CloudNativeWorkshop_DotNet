@@ -20,8 +20,7 @@ In this lab we will push a .NET web application to cloud foundry.
 ----
 > cf api https://api.run.haas-76.pez.pivotal.io --skip-ssl-validation
 ----
-
-. Login to Pivotal Cloudfoundry:
+and login to Pivotal Cloudfoundry:
 +
 ----
 > cf login
@@ -34,7 +33,7 @@ Follow the prompts.
 . Change to the _ViewEnvironmentt_ application directory (this is the folder containing the code files and manifest.yml):
 +
 ----
-> cd $ProjectHome/ViewEnvironment
+> cd pcf-dotnet-environment-viewer/ViewEnvironment
 ----
 
 . Push the application!
