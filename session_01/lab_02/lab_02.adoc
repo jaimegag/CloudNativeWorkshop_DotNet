@@ -112,5 +112,5 @@ You should now see the service created in step 1 listed.
 +
 image::../../Common/images/lab-app-db.png[]
 +
-+
+
 You should now see the service created in step 1 listed and your application listed as a bound app.
