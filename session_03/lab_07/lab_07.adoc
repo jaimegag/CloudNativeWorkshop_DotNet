@@ -20,8 +20,7 @@ In this lab we will push a .NET web application to cloud foundry and will bind i
 ----
 > cf api https://api.run.haas-76.pez.pivotal.io --skip-ssl-validation
 ----
-
-2. Login to Pivotal Cloudfoundry:
+and login to Pivotal Cloudfoundry:
 +
 ----
 > cf login
